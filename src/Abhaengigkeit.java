@@ -10,9 +10,11 @@ public class Abhaengigkeit implements AbhaengigkeitIF {
                 if (dependency[1].equals(sequence[i])) {
                     boolean isDone = false;
                     for (int j = 0; j < i; ++j) {
+                        if (sequence[i].equals(sequence[j])) {
+                            throw new IllegalArgumentException("Aufgaben dürfen nur einmal abgearbeitet werden.");
+                        }
                         if (sequence[j].equals(dependency[0])) {
                             isDone = true;
-                            break;
                         }
                     }
                     if (!isDone) {
